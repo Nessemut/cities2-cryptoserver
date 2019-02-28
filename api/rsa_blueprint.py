@@ -1,11 +1,10 @@
 from flask import Blueprint
-
-from util.primes import generate_primes
+from model.rsa import get_keys
 
 rsa_blueprint = Blueprint('rsa', __name__, url_prefix='/rsa')
-bits = 1024
 
 
-@rsa_blueprint.route('/getprimes')
+@rsa_blueprint.route('/getkeys')
 def root():
-    return str(generate_primes(bits))
+    keys = get_keys()
+    return "Kpub: [{}, {}]\nKpriv: [{}, {}]".format(keys[1], keys[0], keys[2], keys[0])
