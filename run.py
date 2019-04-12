@@ -1,6 +1,6 @@
 from flask import Flask
 from api.rsa_blueprint import rsa_blueprint
-
+from model.rsa import rsa
 
 app = Flask(__name__)
 
